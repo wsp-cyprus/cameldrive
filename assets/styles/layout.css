@@ -1,0 +1,154 @@
+/*
+
+Layout CSS
+=============
+
+*/
+
+#content {
+    padding-top: 0;
+}
+
+/* --------------------------------------
+   Navbar
+   -------------------------------------- */
+
+.nav > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.flag-icon {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    text-decoration: none !important;
+}
+
+.flag-icon-toggle {
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+nav {
+    z-index: 9000;
+}
+
+.header-block {
+    background: url("../images/header.jpg") no-repeat;
+    -webkit-background-size: 100% 100%; /* For WebKit*/
+    -moz-background-size: 100% 100%;    /* Mozilla*/
+    -o-background-size: 100% 100%;      /* Opera*/
+    background-size: 100% 100%;         /* Generic*/
+    height: 210px;
+}
+
+.header-block-logo {
+    width: 350px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-brand {
+    padding: 0 10px 0 0;
+}
+
+.header-block-contacts {
+    width: 385px;
+    height: 200px;
+}
+
+.block-contacts__details {
+    text-align: center;
+    color: white;
+    font-size: large;
+}
+
+.block-contacts__details:first-of-type {
+    padding-top: 15px;
+}
+
+#contacts-header {
+    width: 274px;
+    height: 106px;
+    margin-left: 20px;
+    background-color: #f08000;
+}
+
+#message {
+    width: 140px;
+    height: 42px;
+    margin-left: 80px;
+    background-color: #94c11f;
+    margin-top: 6px;
+    padding: 0 5px;
+}
+
+#message:hover {
+    background-color: #759C0E;
+}
+
+#object-find {
+    height: 40px;
+    width: 282px;
+    margin-top: 7px;
+    margin-left: 8px;
+    background-color: gainsboro;
+}
+
+#object-find_input {
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+#object-find_button {
+    margin-top: 3px;
+    margin-left: 10px;
+}
+
+.affix {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.affix + #content {
+    padding-top: 70px;;
+}
+
+.dropdown-header {
+    font-size: medium;
+    font-style: italic;
+}
+
+/* --------------------------------------
+   Buttons
+   -------------------------------------- */
+
+.btn-margin-header {
+    margin: 7px 5px;
+}
+
+
+/* --------------------------------------
+   Footer
+   -------------------------------------- */
+
+footer {
+    background: #333;
+    color: #eee;
+    font-size: 11px;
+    padding: 20px;
+}
+
+.developer {
+    text-align: right;
+}
+
+#developer {
+    margin-left: 10px;
+}

@@ -1,0 +1,270 @@
+/* --------------------------------------
+   Global Styles
+   -------------------------------------- */
+
+.menu-active {
+    /*
+    color: #555 !important;
+    background-color: #e7e7e7 !important;
+    */
+    color: @main_palette !important;
+    background-color: #9B7700 !important;
+}
+
+.panel {
+    margin-top: 30px;
+}
+
+.panel.panel-info {
+    position: relative;
+}
+
+.glyphicon-tag:before {
+    margin-right: 10px;
+}
+
+h1 > small {
+    margin-left: 30px;
+}
+
+.slideanim {visibility:hidden;}
+
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    /* The duration of the animation */
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible;
+}
+
+.busy-alert {
+    margin-top: 20px;
+}
+
+.spinner {
+    position: relative;
+    margin: 0 auto;
+    width: 50%;
+    padding: 20px 0;
+    /*margin-bottom: 20px;*/
+}
+
+.spinner-text {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    /*
+    position: relative;
+    width: 15%;
+    margin: 0 auto;
+    */
+    /*padding: 20px 10px;*/
+}
+
+.lbl-margin-left {
+    margin-left: 5px;
+}
+
+/*
+    For AngularStrap
+ */
+
+/*
+body {
+    overflow: auto !important;
+}
+*/
+
+.modal-backdrop.am-fade {
+    opacity: .7;
+    transition: opacity .15s linear;
+    &.ng-enter {
+         opacity: 0;
+    &.ng-enter-active {
+         opacity: .7;
+     }
+    }
+    &.ng-leave {
+         opacity: .7;
+    &.ng-leave-active {
+         opacity: 0;
+     }
+    }
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+
+
+/* --------------------------------------
+   Typography
+   -------------------------------------- */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+}
+
+.well {
+    margin: 20px 0;
+    padding: 0;
+}
+.well .page-body {
+    padding: 19px;
+}
+
+.well .page-header.page-primary {
+    margin-top: 0;
+    background-color: #2e6da4;
+}
+
+.well .page-header.page-primary h1 {
+    padding: 19px;
+    margin-top: 0;
+    color: white;
+}
+
+.well .page-header.page-primary h1 small {
+    color: gainsboro;
+}
+
+/* --------------------------------------
+   Media Queries
+   -------------------------------------- */
+
+/* Portrait & landscape phone */
+@media (max-width: 480px) {
+
+    .panel-heading {
+        font-size: 14px;
+        color: white;
+    }
+
+    .panel-body {
+        font-size: 10px;
+    }
+
+    .panel-main-exclusive {
+        font-size: 8px;
+    }
+
+    .badge.badge-object {
+        font-size: small;
+    }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+
+    .panel-heading {
+        font-size: 18px;
+        color: white;
+    }
+
+    .panel-body {
+        font-size: 12px;
+    }
+
+    .panel-main-exclusive {
+        font-size: 10px;
+    }
+
+}
+
+/* Large desktop */
+@media (max-width: 1200px) {
+
+    .panel-heading {
+        font-size: 20px;
+        color: white;
+    }
+
+    .panel-body {
+        font-size: 14px;
+    }
+
+    .panel-main-exclusive {
+        font-size: 12px;
+    }
+}
+
+/* --------------------------------------
+   Buttons
+   -------------------------------------- */
+
+.btn-margin-header {
+    margin: 7px 5px;
+}
+
+.btn-margin {
+    margin: 7px 10px !important;
+}
+
+/* --------------------------------------
+   Badges
+   -------------------------------------- */
+
+
+.badge.badge-object {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    padding: 10px;
+}
+
+.badge-hit {
+    background-color: #C9302C !important;
+    font-size: large;
+}
+
+.badge-saleoff {
+    background-color: sandybrown !important;
+    font-size: large;
+}
+
+
+/* --------------------------------------
+   Images
+   -------------------------------------- */
+
+.img-main {
+    width: 100%;
+    height: 100%;
+}
+
+.img-gallery {
+    width: 110px;
+    height: 80px;
+}
+
+/* --------------------------------------
+   Modals
+   -------------------------------------- */
+
+
+
+
+

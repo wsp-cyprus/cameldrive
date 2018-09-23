@@ -1,0 +1,32 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+
+    div(data-ng-controller='HeaderAdminCtrl as hc').container-fluid
+
+      .navbar-header
+
+        button(data-target=".navbar-responsive-collapse", data-toggle="collapse", type="button").navbar-toggle
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+
+        .navbar-brand.wsp-navbar-brand.link-and-scroll
+          a(href="/")
+            img(src="../../images/camel-logo-355x355.png", alt="Camel Car Hire logo", height="50px")
+
+          a(href="/").wsp-nav-title Camel Car Hire
+
+      .navbar-collapse.collapse.navbar-responsive-collapse.navbar-right
+
+        ul.nav.navbar-nav.wsp-navbar
+          li(data-ng-repeat='elem in hc.navMeny')
+            a(data-ui-sref="{{elem.href}}",
+              data-ui-sref-active="menu-active",
+              translate='{{elem.text}}').wsp-nav-item.link-and-scroll
+
+          //li
+          //  button.btn.btn-default.wsp-header-btn-user {{ 'HEADER_USER' | translate }} {{ hc.user }}
+          //
+          //li
+          //  button(data-ng-click='hc.logout()').btn.btn-danger.wsp-header-btn-logout {{ 'HEADER_LOGOUT' | translate }}
+
+

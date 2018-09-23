@@ -1,0 +1,50 @@
+div(data-ng-controller='CommentsCtrl as ctrl').row
+  .container-fluid
+    .feedback
+      .container.text-vertical-center-3
+        .wsp-contact-form-feedback {{'FEEDBACK_HEADER' | translate}}
+          form(novalidate='novalidate',
+          data-ng-init="ctrl.formData.commentGroup.key='feedback'"
+          name='ctrl.infoForm',
+          data-ng-submit='ctrl.sendMessage()').wsp-contact-form
+            .form-group.clearfix
+              label(for='clientName', translate='LBL_FIELD_NAME').col-sm-4.control-label.text-right.wsp-label
+              .col-sm-4
+                input(type="text",
+                data-ng-pattern="/^[a-zA-Zа-яА-Яα-ωΑ-Ω\\s\\-\\.\\']+$/",
+                data-ng-required-err-type="{{'AV_REQ' | translate}}",
+                data-ng-pattern-err-type="{{'FIELD_NAME_ERR' | translate}}",
+                required,
+                data-ng-model='ctrl.formData.name').form-control#clientName
+
+            .form-group.clearfix
+              label(for='clientEmail', translate='LBL_FIELD_EMAIL').col-sm-4.control-label.text-right.wsp-label
+              .col-sm-4
+                input(type="text",
+                data-ng-pattern='/^([0-9a-zA-Z\\.]([\\.\\-\\+\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]*\\.)+[a-zA-Z]{2,9})$/',
+                data-ng-required-err-type="{{'AV_REQ' | translate}}",
+                data-ng-pattern-err-type="{{'FIELD_EMAIL_ERR' | translate}}",
+                data-ng-model='ctrl.formData.email').form-control#clientEmail
+
+            .form-group.clearfix
+              label(for='clientPhone', translate='LBL_FIELD_PHONE').col-sm-4.control-label.text-right.wsp-label
+              .col-sm-4
+                input(type="text",
+                data-ng-model='ctrl.formData.phone').form-control#clientPhone
+
+            .form-group.clearfix
+              label(for='clientInfo', translate='LBL_COMMENT_BODY').col-sm-4.control-label.text-right.wsp-label
+              .col-sm-6
+                textarea(type="text",
+                required,
+                rows="7",
+                data-ng-model='ctrl.formData.message').form-control#clientInfo
+
+            .form-group.clearfix
+              .wsp-section06-btn
+                button(type='submit',
+                translate='BTN_CONTACT_US').btn.wsp-btn.wsp-btn-md.wsp-btn-book
+                a(data-ng-click='ctrl.clear()',
+                translate='BTN_CLR').btn.wsp-btn.wsp-btn-md.wsp-btn-details
+
+

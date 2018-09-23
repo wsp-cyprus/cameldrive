@@ -1,0 +1,111 @@
+div(data-ng-controller='CarBookCtrl as ctrl').row
+  .container-fluid#car_booking
+    .section6
+      .col-md-offset-3.col-md-6.text-vertical-center-3.wsp-block-padding-30
+        .wsp-home-header06 {{'HOME_TITLE_06' | translate}}
+        .wsp-home-subheader06.text-vertical-center-5 {{'HOME_SUBTITLE_06' | translate}}
+
+      .container.text-vertical-center-7
+        form(novalidate='novalidate',
+          name='ctrl.bookForm',
+          data-ng-submit='ctrl.book()')
+          .form-group.clearfix
+            label(for='clientName', translate='LBL_FIELD_NAME').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-4
+              input(type="text",
+              data-ng-pattern="/^[a-zA-Zа-яА-Яα-ωΑ-Ω\\s\\-\\.\\']+$/",
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              data-ng-pattern-err-type="{{'FIELD_NAME_ERR' | translate}}",
+              required,
+              data-ng-model='ctrl.formData.name').form-control#clientName
+
+          .form-group.clearfix
+            label(for='clientEmail', translate='LBL_FIELD_EMAIL').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-4
+              input(type="text",
+              data-ng-pattern='/^([0-9a-zA-Z\\.]([\\.\\-\\+\\w])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]*\\.)+[a-zA-Z]{2,9})$/',
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              data-ng-pattern-err-type="{{'FIELD_EMAIL_ERR' | translate}}",
+              required,
+              data-ng-model='ctrl.formData.email').form-control#clientEmail
+
+          .form-group.clearfix
+            label(for='clientPhone', translate='LBL_FIELD_PHONE').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-4
+              input(type="text",
+              data-ng-model='ctrl.formData.phone').form-control#clientPhone
+
+          .form-group.clearfix
+            label(for='dateStart', translate='LBL_FIELD_DATE_START').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-2
+              input(type="text",
+              required,
+              placeholder="{{'DATEPICKER_DATE' | translate}}",
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              data-ng-model='ctrl.formData.period_start',
+              data-max-date='{{ctrl.formData.pariod_end}}',
+              data-min-date='{{ctrl.startDate}}',
+              bs-datepicker).form-control#dateStart
+            .col-sm-1
+              input(type="text",
+              required,
+              placeholder="{{'DATEPICKER_TIME' | translate}}",
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              data-ng-model='ctrl.formData.period_start',
+              data-time-format="HH:mm",
+              bs-timepicker).form-control#timeStart
+
+          .form-group.clearfix
+            label(for='dateEnd', translate='LBL_FIELD_DATE_END').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-2
+              input(type="text",
+              required,
+              placeholder="{{'DATEPICKER_DATE' | translate}}",
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              data-ng-model='ctrl.formData.pariod_end',
+              data-min-date='{{(ctrl.formData.period_start ? ctrl.formData.period_start : ctrl.startDate)}}',
+              bs-datepicker).form-control#dateEnd
+            .col-sm-1
+              input(type="text",
+              required,
+              placeholder="{{'DATEPICKER_TIME' | translate}}",
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              data-ng-model='ctrl.formData.pariod_end',
+              data-time-format="HH:mm",
+              bs-timepicker).form-control#timeEnd
+
+          .form-group.clearfix
+            label(for='carGroup', translate='LBL_CAR').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-6
+              select(name='carGroup',
+              required,
+              data-ng-options='option.val for option in ctrl.carGroupList track by option.key',
+              data-ng-model='ctrl.formData.carGroup').form-control#carGroup
+
+          .form-group.clearfix
+            label(for='pLocation', translate='LBL_FIELD_P_LOCATION').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-6
+              input(type="text",
+              data-ng-model='ctrl.formData.pLocation').form-control#pLocation
+
+          .form-group.clearfix
+            label(for='dLocation', translate='LBL_FIELD_D_LOCATION').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-6
+              input(type="text",
+              data-ng-model='ctrl.formData.dLocation').form-control#dLocation
+
+          .form-group.clearfix
+            label(for='clientInfo', translate='LBL_FIELD_ADDINFO').col-sm-4.control-label.text-right.wsp-label
+            .col-sm-6
+              textarea(type="text",
+              rows="7",
+              data-ng-model='ctrl.formData.additionalInfo').form-control#clientInfo
+
+          .form-group.clearfix
+            .wsp-section06-btn
+              button(type='submit',
+              translate='BTN_BOOK_PERFORM').btn.wsp-btn.wsp-btn-md.wsp-btn-book
+              a(data-ng-click='ctrl.clear()',
+              translate='BTN_CLR').btn.wsp-btn.wsp-btn-md.wsp-btn-details
+
+

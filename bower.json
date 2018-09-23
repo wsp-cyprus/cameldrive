@@ -1,0 +1,48 @@
+{
+  "name": "cameldrive",
+  "description": "Camel Drive Project",
+  "main": "app.js",
+  "authors": [
+    "Dmitry Ponomarev dponfl@gmail.com"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dponfl/cameldrive",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "vendor"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "angular": "1.6.4",
+    "angular-resource": "1.6.4",
+    "angular-ui-router": "0.4.2",
+    "ng-lodash": "0.5.0",
+    "angular-translate": "2.15.1",
+    "angular-auto-validate": "1.19.6",
+    "ngInfiniteScroll": "1.3.4",
+    "angular-spinner": "1.0.1",
+    "angular-strap": "2.3.12",
+    "angular-animate": "1.6.4",
+    "angular-sanitize": "1.6.4",
+    "AngularJS-Toaster": "angularjs-toaster#2.1.0",
+    "bootstrap-additions": "0.3.1",
+    "angular-dynamic-locale": "0.1.32",
+    "angular-i18n": "1.6.4",
+    "angularUtils-pagination": "angular-utils-pagination#0.11.1",
+    "angular-file-upload": "2.5.0",
+    "async": "2.5.0",
+    "angular-ladda": "0.4.3",
+    "picturefill": "1.2.1",
+    "jquery": "3.2.1",
+    "animate.css": "3.5.2",
+    "angular-animate-css": "0.0.4"
+  },
+  "resolutions": {
+    "angular": "1.6.4"
+  }
+}

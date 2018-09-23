@@ -1,0 +1,301 @@
+#testimonials
+  .row#testimonialsCallout
+    .container
+      .cal-12
+        .panel.panel-info
+          .panel-heading
+            h2 {{'TESTIMONIALS_PAGE_HEADER_TITLE' | translate}}
+
+          div(data-ng-controller='AdminTestimonialsCtrl as p').panel-body#block-long
+
+            div(bs-active-pane="p.activeTabMain", bs-tabs)
+
+              //=================
+              // New objects
+              //=================
+
+              div(data-title="Создание новых отзывов",
+              name="new_obj",
+              bs-pane
+              ).tabs-block
+
+                div(data-ng-controller='TestimonialsCreateAdminCtrl as tcac')
+                  form(novalidate='novalidate',
+                  data-ng-submit='tcac.create()').form-horisontal
+
+                    fieldset
+
+                      .form-group.clearfix
+                        label(for='objectShowLabel', translate='LBL_TESTIMONIAL_SHOW').col-sm-2.control-label.text-right
+                        .col-sm-4
+                          #objectShowLabel
+                            label(for='objectShow')
+                              input(type='radio',
+                              data-ng-model='tcac.formData.show',
+                              value="show"
+                              )#objectShow
+                              | Да
+                            label(for='objectNotShow')
+                              input(type='radio',
+                              data-ng-model='tcac.formData.show',
+                              value="not_show"
+                              )#objectNotShow
+                              | Нет
+
+                      .form-group.clearfix
+                        label(for='objectLangLabel', translate='LBL_OBJ_LANG').col-sm-2.control-label.text-right
+                        .col-sm-4
+                          #objectLangLabel
+                            label(for='objectEn')
+                              input(type='radio',
+                              data-ng-model='tcac.formData.lang',
+                              value="en"
+                              )#objectEn
+                              | English
+                            label(for='objectRu')
+                              input(type='radio',
+                              data-ng-model='tcac.formData.lang',
+                              value="ru"
+                              )#objectRu
+                              | Русский
+
+                      .form-group.clearfix
+                        label(for='name', translate='LBL_NAME').col-sm-2.control-label.text-right
+                        .col-sm-5
+                          input(type="text",
+                          placeholder="{{'OBJ_NAME_PLACEHOLDER' | translate}}",
+                          data-ng-model='tcac.formData.name'
+                          ).form-control#name
+
+                      .form-group.clearfix
+                        label(for='email', translate='LBL_EMAIL').col-sm-2.control-label.text-right
+                        .col-sm-5
+                          input(type="text",
+                          placeholder="{{'OBJ_EMAIL_PLACEHOLDER' | translate}}",
+                          data-ng-model='tcac.formData.email'
+                          ).form-control#email
+
+                      .form-group.clearfix
+                        label(for='phone', translate='LBL_PHONE').col-sm-2.control-label.text-right
+                        .col-sm-5
+                          input(type="text",
+                          placeholder="{{'OBJ_PHONE_PLACEHOLDER' | translate}}",
+                          data-ng-model='tcac.formData.phone'
+                          ).form-control#phone
+
+                      .form-group.clearfix
+                        label(for='msg', translate='LBL_MSG').col-sm-2.control-label.text-right
+                        .col-sm-5
+                          textarea(type="text",
+                          placeholder="{{'OBJ_MSG_PLACEHOLDER' | translate}}",
+                          data-ng-model='tcac.formData.msg'
+                          ).form-control#msg
+
+                      //.form-group.clearfix
+                      //  label(for='position', translate='LBL_POSITION').col-sm-2.control-label.text-right
+                      //  .col-sm-5
+                      //    input(type="text",
+                      //    placeholder="{{'OBJ_POSITION_PLACEHOLDER' | translate}}",
+                      //    data-ng-model='tcac.formData.position'
+                      //    ).form-control#position
+
+                      div(data-ng-show="tcac.createError").col-sm-offset-2.col-sm-5.alert.alert-error
+                        | Ошибка сохранения данных
+                      div(data-ng-show="tcac.createSuccess").col-sm-offset-2.col-sm-5.alert.alert-success
+                        | Данные успешно сохранены
+
+                      .form-group.clearfix
+                        .col-lg-7.col-lg-offset-2.col-md-offset-1.col-sm-offset-1
+                          button(type='submit',
+                          translate='BTN_ADMIN_CREATE',
+                          ).btn.btn-success.btn-lg.btn-margin
+                          button(data-ng-click='tcac.clear()',
+                          translate='BTN_CLR'
+                          ).btn.btn-warning.btn-lg.btn-margin
+
+
+
+
+
+              //=================
+              // Existing objects
+              //=================
+
+              div(data-title="Редактирование отзывов",
+                name="existing_obj",
+                bs-pane
+              ).tabs-block
+
+                .row#block-testimonials-filter-admin
+                  .col-sm-8.col-sm-offset-2#testimonialsFilterWrapper
+                    .panel.panel-info#testimonialsFilter
+                      .panel-heading
+                        h3(translate='PANEL_HEADER')
+                      .panel-body
+                        form(novalidate='novalidate',
+                        data-ng-submit='p.find()').form-horisontal
+
+                          fieldset(data-ng-attr-disabled='{{p.filterDisabled || undefined}}')
+
+                            .form-group.clearfix
+                              label(for='showType', translate='LBL_SHOW').col-sm-3.control-label.text-right
+                              .col-sm-7
+                                select(name='showType',
+                                data-ng-options='option.val for option in p.showList track by option.key',
+                                data-ng-model='p.formData.show').form-control#showType
+
+                            .form-group.clearfix
+                              label(for='langType', translate='LBL_LANG').col-sm-3.control-label.text-right
+                              .col-sm-7
+                                select(name='langType',
+                                data-ng-options='option.val for option in p.langList track by option.key',
+                                data-ng-model='p.formData.lang').form-control#langType
+
+                            .form-group.clearfix
+                              .col-lg-7.col-lg-offset-4.col-md-offset-2.col-sm-offset-1
+                                button(type='submit',
+                                translate='BTN_FIND').btn.btn-success.btn-lg.btn-margin
+                                button(data-ng-click='p.clear()',
+                                translate='BTN_CLR').btn.btn-warning.btn-lg.btn-margin
+
+                div(data-ng-show='showFoundNothing').col-sm-8.col-sm-offset-2.alert.alert-danger.wsp-alert-admin
+                  h4 {{ 'GENERAL_FOUND_NOTHING' | translate }}
+
+                div(data-ng-hide='showFoundNothing').row
+                  .col-sm-10
+                    h3 Список объектов
+                    button(data-ng-click='p.clearSort();').btn.btn-info Очистить сортировку
+                    table.table.table-striped.table-hover
+                      thead
+                        tr
+                          th(data-ng-click='p.sort("id");').sort-th Номер записи
+                            span(data-ng-show="p.sortKey=='id'",
+                            data-ng-class="{'glyphicon-chevron-up':!p.reverse,'glyphicon-chevron-down':p.reverse}").glyphicon.sort-icon
+                          th(data-ng-click='p.sort("lang");').sort-th Язык
+                            span(data-ng-show="p.sortKey=='lang'",
+                            data-ng-class="{'glyphicon-chevron-up':!p.reverse,'glyphicon-chevron-down':p.reverse}").glyphicon.sort-icon
+                          th(data-ng-click='p.sort("name");').sort-th Имя
+                            span(data-ng-show="p.sortKey=='name'",
+                            data-ng-class="{'glyphicon-chevron-up':!p.reverse,'glyphicon-chevron-down':p.reverse}").glyphicon.sort-icon
+                          th(data-ng-click='p.sort("email");').sort-th Email
+                            span(data-ng-show="p.sortKey=='email'",
+                            data-ng-class="{'glyphicon-chevron-up':!p.reverse,'glyphicon-chevron-down':p.reverse}").glyphicon.sort-icon
+                          th Отзыв
+                          th
+                            div.text-center Открыт для показа
+                          th
+                            div.text-center Действие
+                      tbody
+                        tr(data-dir-paginate='rec in records|orderBy:p.sortKey:p.reverse|itemsPerPage:7')
+                          td {{rec.id}}
+                          td {{rec.lang}}
+                          td {{rec.name}}
+                          td {{rec.email}}
+                          td {{rec.info}}
+                          td
+                            div(data-ng-if="rec.show").text-center
+                              span(aria-hidden="true").glyphicon.glyphicon-ok.admin-text-green
+                            div(data-ng-if="!rec.show").text-center
+                              span(aria-hidden="true").glyphicon.glyphicon-remove.admin-text-red
+                          td
+                            button(data-ng-click='p.edit(rec.id)',
+                            data-ng-disabled="editMode"
+                            ).btn.btn-sm.btn-info Редактировать
+
+                    dir-pagination-controls(max-size="3", boundary-links="true")
+
+                  div(data-ng-if="editMode").col-sm-10
+                    h3 Редактирование отзыва, запись номер {{ p.objData.id }}
+                    form(novalidate='novalidate',
+                    data-ng-submit='p.update()').form-horisontal
+
+                      fieldset
+
+                        .form-group.clearfix
+                          label(for='objectShowLabel', translate='LBL_TESTIMONIAL_SHOW').col-sm-2.control-label.text-right
+                          .col-sm-4
+                            #objectShowLabel
+                              label(for='objectShow')
+                                input(type='radio',
+                                data-ng-model='p.objData.show',
+                                value="show"
+                                )#objectShow
+                                | Да
+                              label(for='objectNotShow')
+                                input(type='radio',
+                                data-ng-model='p.objData.show',
+                                value="not_show"
+                                )#objectNotShow
+                                | Нет
+
+                        .form-group.clearfix
+                          label(for='objectLangLabel', translate='LBL_OBJ_LANG').col-sm-2.control-label.text-right
+                          .col-sm-4
+                            #objectLangLabel
+                              label(for='objectEn')
+                                input(type='radio',
+                                data-ng-model='p.objData.lang',
+                                value="en"
+                                )#objectEn
+                                | English
+                              label(for='objectRu')
+                                input(type='radio',
+                                data-ng-model='p.objData.lang',
+                                value="ru"
+                                )#objectRu
+                                | Русский
+
+                        .form-group.clearfix
+                          label(for='name', translate='LBL_NAME').col-sm-2.control-label.text-right
+                          .col-sm-5
+                            input(type="text",
+                            placeholder="{{'OBJ_NAME_PLACEHOLDER' | translate}}",
+                            data-ng-model='p.objData.name'
+                            ).form-control#name
+
+                        .form-group.clearfix
+                          label(for='email', translate='LBL_EMAIL').col-sm-2.control-label.text-right
+                          .col-sm-5
+                            input(type="text",
+                            placeholder="{{'OBJ_EMAIL_PLACEHOLDER' | translate}}",
+                            data-ng-model='p.objData.email'
+                            ).form-control#email
+
+                        .form-group.clearfix
+                          label(for='phone', translate='LBL_PHONE').col-sm-2.control-label.text-right
+                          .col-sm-5
+                            input(type="text",
+                            placeholder="{{'OBJ_PHONE_PLACEHOLDER' | translate}}",
+                            data-ng-model='p.objData.phone'
+                            ).form-control#phone
+
+                        .form-group.clearfix
+                          label(for='msg', translate='LBL_MSG').col-sm-2.control-label.text-right
+                          .col-sm-5
+                            textarea(type="text",
+                            placeholder="{{'OBJ_MSG_PLACEHOLDER' | translate}}",
+                            data-ng-model='p.objData.msg'
+                            ).form-control#msg
+
+                        //.form-group.clearfix
+                        //  label(for='position', translate='LBL_POSITION').col-sm-2.control-label.text-right
+                        //  .col-sm-5
+                        //    input(type="text",
+                        //    placeholder="{{'OBJ_POSITION_PLACEHOLDER' | translate}}",
+                        //    data-ng-model='p.objData.position'
+                        //    ).form-control#position
+
+                        div(data-ng-show="updateError").col-sm-offset-2.col-sm-5.alert.alert-error
+                          h4 Ошибка сохранения данных
+                        div(data-ng-show="updateSuccess").col-sm-offset-2.col-sm-5.alert.alert-success
+                          h4 Данные успешно сохранены
+
+                        .form-group.clearfix
+                          .col-lg-7.col-lg-offset-2.col-md-offset-1.col-sm-offset-1
+                            button(type='submit',
+                            translate='BTN_ADMIN_UPDATE',
+                            ).btn.btn-success.btn-lg.btn-margin
+                            button(data-ng-click='p.cancel()',
+                            translate='BTN_CANCEL'
+                            ).btn.btn-warning.btn-lg.btn-margin
+

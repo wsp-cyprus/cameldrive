@@ -1,0 +1,13 @@
+extends ./layout
+
+block body
+  .main
+    h1 Not found
+    if (typeof data !== 'undefined')
+      h2= data
+    else
+      h2 The page you were trying to reach doesn't exist.
+    p.help
+      a(href="http://en.wikipedia.org/wiki/HTTP_404") Why
+      |  might this be happening?
+

@@ -1,0 +1,42 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+
+    div(data-ng-controller='HeaderCtrl as hc').container-fluid
+
+      .navbar-header
+
+        button(data-target=".navbar-responsive-collapse", data-toggle="collapse", type="button").navbar-toggle
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+
+        .navbar-brand.wsp-navbar-brand.link-and-scroll
+          a(href="/")
+            img(src="../../images/camel-logo-355x355.png", alt="Camel Car Hire logo", height="50px")
+
+          a(href="/").wsp-nav-title Camel Car Hire
+
+      .navbar-collapse.collapse.navbar-responsive-collapse.navbar-right
+
+        ul.nav.navbar-nav.wsp-navbar
+          li(data-ng-repeat='elem in hc.navMeny')
+            a(data-ui-sref="{{elem.href}}",
+              data-ui-sref-active="menu-active",
+              translate='{{elem.text}}').wsp-nav-item.link-and-scroll
+
+          li(data-ng-controller='translateCtrl as t').dropdown
+            div(data-toggle="dropdown").dropdown-toggle.flag-icon-toggle
+              img(ng-src='{{t.getLangIcon();}}')
+
+            ul.dropdown-menu
+              li
+                button(data-ng-click='t.changeLanguage("en");').btn.btn-link.flag-icon.wsp-btn-link
+                  img(src='../../images/flag_icon_en.png')
+                  | &nbsp;&nbsp;&nbsp;English
+              li(data-ng-controller='translateCtrl as t')
+                button(data-ng-click='t.changeLanguage("ru");').btn.btn-link.flag-icon.wsp-btn-link
+                  img(src='../../images/flag_icon_ru.png')
+                  | &nbsp;&nbsp;&nbsp;Русский
+
+
+toaster-container(data-toaster-options="{'toaster-id': '12345'}")
+

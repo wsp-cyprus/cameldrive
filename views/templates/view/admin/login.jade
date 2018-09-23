@@ -1,0 +1,51 @@
+.row
+  .container-fluid
+    .container
+      div(data-ng-controller="LoginController as lc").form-container.login-form-admin
+
+        form(novalidate='novalidate',
+        data-ng-submit='lc.login()').form-horisontal
+          h1 {{ 'TITLE_SIGNIN' | translate}}
+          .form-group.clearfix
+            label(for="username").col-sm-2.control-label.text-right.wsp-admin-label {{ 'LOGIN_LABEL' | translate}}
+            .col-sm-4
+              input(type="text",
+              required,
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              placeholder="{{ 'LOGIN_TEXT' | translate}}",
+              name="username",
+              data-ng-model="lc.username",
+              autofocus).wsp-admin-text#username
+
+          .form-group.clearfix
+            label(for="password").col-sm-2.control-label.text-right.wsp-admin-label {{ 'PASSWORD_LABEL' | translate}}
+            .col-sm-4
+              input(type="password",
+              required,
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              placeholder="{{ 'PASSWORD_TEXT' | translate}}",
+              name="password",
+              data-ng-model="lc.password").wsp-admin-text#password
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="lc.userNotFound").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP_6' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="lc.userNotAdmin").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP_3' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="lc.authorized").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP_5' | translate}}
+
+          .form-group.clearfix
+              .col-sm-6.col-sm-offset-2
+                button(type='submit',
+                translate='BTN_ADMIN_LOGIN').btn.btn-success.btn-lg.wsp-btn-10
+                button(type="button", data-ng-click='lc.clear()',
+                translate='BTN_ADMIN_CLEAR').btn.btn-warning.btn-lg.wsp-btn-10
+

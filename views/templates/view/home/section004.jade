@@ -1,0 +1,85 @@
+div(data-ng-controller="CarCtrl as ctrl").row
+  .container-fluid#cars
+    .section4
+      .section4
+        .col-md-offset-2.col-md-8.text-vertical-center-5
+          .wsp-home-header04 {{'HOME_TITLE_04' | translate}}
+          div(role="alert",
+          data-ng-repeat="highlight in ctrl.highlights").alert.alert-warning.wsp-alert-block
+            .wsp-alert04-header {{ highlight.header }}
+            .wsp-alert04-content {{ highlight.content }}
+        .container.text-vertical-center-12
+          .row
+            div(data-ng-repeat='group in ctrl.panelGroups').row
+              .col-md-4(data-ng-repeat="car in group")
+                .thumbnail.wsp-thumbnail-border04
+
+                  a(href='{{car.img.href}}',
+                  data-lightbox='{{car.img.dataLightbox}}',
+                  data-title='{{car.img.dataTitle}}')
+                    img(data-ng-src='{{car.img.src}}').wsp-thumb-img04
+                    span.badge.wsp-block04-badge {{car.group}}
+
+                  .wsp-thumbnail-text04 {{car.title}}
+
+                  .col-md-12.col-sm-12.col-xs-12.wsp-no-padding-left.wsp-no-padding-right
+                    .col-md-4.col-sm-4.col-xs-4.wsp-no-padding-left.wsp-no-padding-right.wsp-details-main
+                      .wsp-block04-img-wrapper-01
+                        img(data-ng-src="/images/gear.png", alt="Camel Car Hire - Section 04-1")
+                      .wsp-details-main-text-wrapper
+                        .wsp-details-main-text {{car.contentObj.transmission.text}}
+                    .col-md-4.col-sm-4.col-xs-4.wsp-block-border-left.wsp-block-border-right.wsp-no-padding-left.wsp-no-padding-right.wsp-details-main
+                      .wsp-block04-img-wrapper-01
+                        img(data-ng-src="/images/climat.png", alt="Camel Car Hire - Section 04-2")
+                      .wsp-details-main-text-wrapper
+                        .wsp-details-main-text {{car.contentObj.climat.text}}
+                    .col-md-4.col-sm-4.col-xs-4.wsp-no-padding-left.wsp-no-padding-right.wsp-details-main
+                      .wsp-block04-img-wrapper-03
+                        img(data-ng-src="/images/{{car.contentObj.capacity.text}}.png", alt="Camel Car Hire - Section 04-3").wsp-details-main-img03
+
+                  .wsp-thumbnail-details-highlight04 {{'LBL_PRICE_FROM' | translate}} {{car.time_group_5_l}} &euro;
+
+                  div(data-ng-show="car.showDetails").wsp-thumbnail-details04
+                    form.form-horizontal.wsp-thumbnail-details04
+                      .form-group.wsp-form-group(data-ng-repeat="elem in car.content[1]")
+                        label.col-md-5.col-xs-5.control-label.wsp-text-right.wsp-label {{elem.label}}
+                        .col-md-7.col-xs-7
+                          p.form-control-static.wsp-text-left.wsp-text {{elem.text}}
+
+                    table.wsp-tbl-body
+                      tr
+                        th.wsp-tbl-column-one {{ 'HOME_SEASON' | translate }}
+                        th 14+ {{ 'HOME_5D' | translate }}
+                        th 7-14 {{ 'HOME_5D' | translate }}
+                        th 3-6 {{ 'HOME_5D' | translate }}
+                        th 2 {{ 'HOME_2D' | translate }}
+                        th 1 {{ 'HOME_1D' | translate }}
+                      tr
+                        td.wsp-tbl-column-one {{ 'HOME_HIGH_SEASON' | translate }}  01/05-31/10
+                        td {{ car.time_group_5_h }}&nbsp;&euro;
+                        td {{ car.time_group_4_h }}&nbsp;&euro;
+                        td {{ car.time_group_3_h }}&nbsp;&euro;
+                        td {{ car.time_group_2_h }}&nbsp;&euro;
+                        td {{ car.time_group_1_h }}&nbsp;&euro;
+                      tr
+                        td.wsp-tbl-column-one {{ 'HOME_LOW_SEASON' | translate }}  01/11-30/04
+                        td {{ car.time_group_5_l }}&nbsp;&euro;
+                        td {{ car.time_group_4_l }}&nbsp;&euro;
+                        td {{ car.time_group_3_l }}&nbsp;&euro;
+                        td {{ car.time_group_2_l }}&nbsp;&euro;
+                        td {{ car.time_group_1_l }}&nbsp;&euro;
+
+                  .row
+                    .col-md-12
+                      .wsp-section04-btn
+                        a(href="#car_booking")
+                          button(data-ng-click="ctrl.selectCarGroup(car.ind)").btn.wsp-btn.wsp-btn-book.wsp-btn-sm
+                            | {{ 'BTN_BOOK_CAR' | translate }}
+                        div(data-ng-show="!car.showDetails")
+                          button(data-ng-click="ctrl.activateDetails(car.ind)").btn.wsp-btn.wsp-btn-sm.wsp-btn-details
+                            | {{ 'BTN_CAR_SHOW_DETAILS' | translate }}
+                        div(data-ng-show="car.showDetails")
+                          button(data-ng-click="ctrl.deactivateDetails(car.ind)").btn.wsp-btn.wsp-btn-sm.wsp-btn-details
+                            | {{ 'BTN_CAR_HIDE_DETAILS' | translate }}
+
+

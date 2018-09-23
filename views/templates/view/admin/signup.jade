@@ -1,0 +1,87 @@
+.row
+  .container-fluid
+    .container
+      div(data-ng-controller="SignupController as sc", data-ng-init="sc.check()").form-container.login-form-admin
+
+        form(novalidate='novalidate',
+        data-ng-submit='sc.signup()').form-horisontal
+          h1 {{ 'TITLE_SIGNUP' | translate}}
+          .form-group.clearfix
+            label(for="username").col-sm-2.control-label.text-right.wsp-admin-label {{ 'LOGIN_LABEL' | translate}}
+            .col-sm-4
+              input(
+              type="text",
+              required,
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              placeholder="{{ 'LOGIN_TEXT' | translate}}",
+              name="username",
+              data-ng-model="sc.username",
+              autofocus
+              ).wsp-admin-text#username
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert").alert.alert-info.col-sm-6
+                h4 Создайте и запомните пароль для доступа в административный раздел.
+
+          .form-group.clearfix
+            label(for="password").col-sm-2.control-label.text-right.wsp-admin-label {{ 'PASSWORD_LABEL' | translate}}
+            .col-sm-4
+              input(
+              type="password",
+              required,
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              placeholder="{{ 'PASSWORD_TEXT' | translate}}",
+              name="password",
+              data-ng-model="sc.password"
+              ).wsp-admin-text#password
+
+          .form-group.clearfix
+            label(for="password2").col-sm-2.control-label.text-right.wsp-admin-label Повторите пароль
+            .col-sm-4
+              input(
+              type="password",
+              required,
+              data-ng-required-err-type="{{'AV_REQ' | translate}}",
+              placeholder="Повторите пароль",
+              name="password2",
+              data-ng-model="sc.password2"
+              ).wsp-admin-text#password2
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="sc.wrongSignup").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="sc.generalError").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_GEN_ERROR' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="sc.userNotFound").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP_2' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="sc.userNotAdmin").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP_3' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="sc.notEqualPasswords").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP_4' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              div(role="alert", data-ng-show="sc.authorized").alert.alert-danger.col-sm-6
+                h4 {{ 'MSG_WRONG_SIGNUP_5' | translate}}
+
+          .form-group.clearfix
+            .col-sm-6.col-sm-offset-2
+              button(type='submit',
+              translate='BTN_ADMIN_LOGIN').btn.btn-success.btn-lg.wsp-btn-10
+              button(type="button", data-ng-click='sc.clear()',
+              translate='BTN_ADMIN_CLEAR').btn.btn-warning.btn-lg.wsp-btn-10
+
